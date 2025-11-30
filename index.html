@@ -1,147 +1,339 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Gautham Bala – Portfolio</title>
+
 <style>
- /* ---------- MOBILE VERSION FIX (Paste this only) ---------- */
-@media (max-width: 600px){
-
-  body{
-    line-height: 1.6;
-  }
-
-  h1{
-    font-size: 2.1rem !important;
-    line-height: 2.3rem !important;
-  }
-
-  h2{
-    font-size: 1.55rem !important;
-    margin-top: 1.8rem !important;
-  }
-
-  .container{
-    width: 94% !important;
-    padding-top: 2rem !important;
-  }
-
-  p, li, .sub{
-    font-size: 1rem !important;
-  }
-
-  ul{
-    margin-left: 1rem !important;
-  }
-
-  .pub-item ul li, .news-item, p{
-    line-height: 1.55rem !important;
-  }
+/* -------------------------
+   CORE THEME (PRO + GAMER)
+-------------------------- */
+:root {
+  --bg: #0b0e13;
+  --bg-soft: #151a21;
+  --text: #e6ecf3;
+  --subtext: #8a96a7;
+  --accent: #00a6ff;         /* neon blue */
+  --accent-glow: 0 0 18px #008bfdcc;
+  --card: rgba(255, 255, 255, 0.04);
+  --glass: rgba(255, 255, 255, 0.06);
+  --border: rgba(255, 255, 255, 0.08);
+  --radius: 16px;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
+  --transition: 0.25s ease;
 }
 
-  *{margin:0;padding:0;box-sizing:border-box;font-family:"SF Pro Display",-apple-system,BlinkMacSystemFont,sans-serif;}
-  body{background:#fafafa;color:#111;line-height:1.7;padding-bottom:4rem;}
-  .container{width:90%;max-width:950px;margin:auto;padding-top:3rem;}
-  h1{font-size:2.6rem;font-weight:800;margin-bottom:0.3rem;}
-  h2{font-size:1.8rem;margin:2.2rem 0 1rem;font-weight:700;}
-  h3{font-size:1.15rem;margin-bottom:0.2rem;}
-  .sub{color:#444;font-size:1rem;margin-bottom:1.5rem;}
-  a{color:#0071e3;text-decoration:none;} a:hover{opacity:.7;}
-  ul{margin-left:1.2rem;margin-top:0.4rem;}
-  .section{margin-top:2rem;}
-  .news-item,.pub-item{margin-bottom:1rem;}
-  .pub-item b{display:block;margin-bottom:0.2rem;}
+/* -------------------------
+   GLOBAL RESET
+-------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", "SF Pro Display", system-ui, sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: 50px;
+
+  /* gamer energy gradient background */
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(0, 136, 255, 0.15), transparent 25%),
+    radial-gradient(circle at 80% 80%, rgba(0, 80, 255, 0.12), transparent 30%),
+    linear-gradient(180deg, #0b0e13 0%, #0a0c12 100%);
+
+  animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+  width: 92%;
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* -------------------------
+   TOP NAV BAR
+-------------------------- */
+.topbar {
+  position: sticky;
+  top: 12px;
+  z-index: 50;
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  padding: 12px 20px;
+  margin-bottom: 30px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topbar h3 {
+  font-size: 1.1rem;
+  letter-spacing: 0.3px;
+}
+
+/* button */
+.btn {
+  background: linear-gradient(90deg, var(--accent), #006dc7);
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #001322;
+  box-shadow: 0 0 12px #0091ff99;
+  transition: var(--transition);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 18px #0095ff;
+}
+
+/* -------------------------
+   HEADER PROFILE CARD
+-------------------------- */
+.header-card {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  padding: 26px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+  margin-bottom: 40px;
+  animation: popIn 0.7s ease forwards;
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+h1 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #fff, #8bb8ff);
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: -1px;
+  margin-bottom: 6px;
+}
+
+.sub {
+  color: var(--subtext);
+  margin-bottom: 5px;
+}
+
+.header-card p {
+  margin-top: 20px;
+  color: var(--subtext);
+  line-height: 1.6;
+}
+
+/* -------------------------
+   SECTION TITLES
+-------------------------- */
+h2 {
+  font-size: 1.7rem;
+  margin: 35px 0 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+h2::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: var(--accent);
+  border-radius: 4px;
+  box-shadow: var(--accent-glow);
+}
+
+/* -------------------------
+   CARD LISTS (news, projects)
+-------------------------- */
+.item-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 20px;
+  border-radius: var(--radius);
+  margin-bottom: 15px;
+  transition: var(--transition);
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+}
+
+.item-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow);
+}
+
+.item-card b {
+  font-size: 1.1rem;
+}
+
+.item-card i {
+  display: block;
+  color: var(--subtext);
+  margin: 4px 0 10px;
+}
+
+.item-card ul {
+  color: var(--subtext);
+  margin-left: 18px;
+  margin-top: 6px;
+  line-height: 1.55;
+}
+
+/* -------------------------
+   GENERAL TEXT
+-------------------------- */
+ul {
+  margin-left: 18px;
+  color: var(--subtext);
+  line-height: 1.55;
+}
+
+p {
+  color: var(--subtext);
+}
+
+/* -------------------------
+   MOBILE RESPONSIVE
+-------------------------- */
+@media (max-width: 700px) {
+  h1 { font-size: 2rem; }
+  .header-card { padding: 20px; }
+  h2 { font-size: 1.4rem; }
+}
 </style>
 </head>
 <body>
+
 <div class="container">
 
-<h1>Gautham Bala</h1>
-<div class="sub">Aspiring Software Engineer & Research Enthusiast</div>
-<div class="sub">thefallenmasterid@gmail.com</div>
-<div class="sub"><a href="https://github.com/thefallenmaster">GitHub</a> | <a href="#">Portfolio</a></div>
+  <!-- Top Bar -->
+  <div class="topbar">
+    <h3>Portfolio</h3>
+    <div>
+      <a href="admin.html" class="btn">Admin</a>
+      <a href="https://github.com/thefallenmaster" class="btn" style="margin-left:10px;">GitHub</a>
+    </div>
+  </div>
 
-<p>I am an aspiring developer focusing on building strong fundamentals in programming, backend systems, and app development. I am currently learning Java, Python, MySQL, HTML, and Android development. My interest lies in understanding how software systems scale, how apps are engineered end-to-end, and how emerging AI tools can be integrated into products.</p>
+  <!-- HEADER CARD -->
+  <div class="header-card">
+    <h1>Gautham Bala</h1>
+    <div class="sub">Aspiring Software Engineer & Research Enthusiast</div>
+    <div class="sub">thefallenmasterid@gmail.com</div>
+    <div class="sub">
+      <a href="https://github.com/thefallenmaster" style="color:var(--accent);text-decoration:none;">GitHub</a> |
+      <a href="#" style="color:var(--accent);text-decoration:none;">Portfolio</a>
+    </div>
 
-<!-- NEWS -->
-<h2>News</h2>
-<div class="news-item">2025.02 – Started working on <b>ArchiveOne</b>, a personal Internet-Archive-style app.</div>
-<div class="news-item">2025.01 – Began exploring Android development and API-based applications.</div>
-<div class="news-item">2024.10 – Completed foundational training in Python and Java.</div>
-<div class="news-item">2024.05 – Began learning SQL and backend logic building.</div>
+    <p>I am an aspiring developer focusing on building strong fundamentals in programming, backend systems, and app development. I am currently learning Java, Python, MySQL, HTML, and Android development. My interest lies in understanding how software systems scale, how apps are engineered end-to-end, and how emerging AI tools can be integrated into products.</p>
+  </div>
 
-<!-- PROJECTS / PUBLICATIONS STYLE SECTION -->
-<h2>Projects</h2>
+  <!-- NEWS -->
+  <h2>News</h2>
+  <div class="item-card">
+    2025.02 – Started working on <b>ArchiveOne</b>, a personal Internet-Archive-style app.
+  </div>
+  <div class="item-card">
+    2025.01 – Began exploring Android development and API-based applications.
+  </div>
+  <div class="item-card">
+    2024.10 – Completed foundational training in Python and Java.
+  </div>
+  <div class="item-card">
+    2024.05 – Began learning SQL and backend logic building.
+  </div>
 
-<div class="pub-item">
-  <b>ArchiveOne – Digital Library & Media App</b>
-  <i>Solo Project | Android + Web</i>
+  <!-- PROJECTS -->
+  <h2>Projects</h2>
+
+  <div class="item-card">
+    <b>ArchiveOne – Digital Library & Media App</b>
+    <i>Solo Project | Android + Web</i>
+    <ul>
+      <li>Designing an Internet Archive–style app with fast downloads, clean UI, and integrated viewer/player.</li>
+      <li>Optimized parallel downloading and caching mechanisms.</li>
+      <li>Focused on performance, data handling, and scalability.</li>
+    </ul>
+  </div>
+
+  <div class="item-card">
+    <b>🔐 SecureCrypt – Advanced Text Encryption & Decryption Tool (Java Swing)</b>
+    <i>Desktop Application | Java</i>
+    <ul>
+      <li>Implements classical + modern cryptographic algorithms: Caesar, ROT13, XOR, Atbash, Vigenere, AES-GCM, Base64, Hex.</li>
+      <li>Features AES-256 master password protection with SHA-256 derived key.</li>
+      <li>Clean Java Swing UI with gradient backgrounds and titled input/output panels.</li>
+      <li>Supports file load/save, and includes an integrated About window.</li>
+    </ul>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <h2>Experience</h2>
+  <div class="item-card">
+    <b>Independent Learning & Project Development</b>
+    <i>2023 – Present</i>
+    <ul>
+      <li>Building coding discipline through daily learning and project attempts.</li>
+      <li>Hands-on practice with backend logic, problem solving, and documentation.</li>
+      <li>Self-driven, long-term development in programming fundamentals.</li>
+    </ul>
+  </div>
+
+  <!-- EDUCATION -->
+  <h2>Education</h2>
+  <div class="item-card">
+    <b>Higher Secondary (Completed)</b>
+    <i>Focus: Computer Science & Mathematics</i>
+  </div>
+
+  <div class="item-card">
+    <b>Independent Technical Learning</b>
+    <ul>
+      <li>Java – OOP, basic backend patterns</li>
+      <li>Python – scripting, data handling</li>
+      <li>MySQL – schema design & queries</li>
+      <li>Web – HTML fundamentals, UI basics</li>
+    </ul>
+  </div>
+
+  <!-- SKILLS -->
+  <h2>Skills</h2>
   <ul>
-    <li>Designing an Internet Archive–style app with fast downloads, clean UI, and integrated viewer/player.</li>
-    <li>Optimized parallel downloading and caching mechanisms.</li>
-    <li>Focused on performance, data handling, and scalability.</li>
+    <li>Java, Python, HTML, MySQL</li>
+    <li>API Integration</li>
+    <li>Android Development (Beginner)</li>
+    <li>Problem Solving and Logic Building</li>
+    <li>Storytelling & Video Editing (Crime Stories)</li>
+  </ul>
+
+  <!-- ACHIEVEMENTS -->
+  <h2>Achievements</h2>
+  <ul>
+    <li>Developed <b>ArchiveOne</b>, a fully conceptualized digital library app focused on performance and clean architecture.</li>
+    <li>Created <b>SecureCrypt</b>, an advanced Java Swing encryption tool implementing classical and modern cryptographic algorithms.</li>
+    <li>Built strong foundations in Java, Python, MySQL, and software design through consistent self-learning.</li>
+    <li>Completed multiple small-scale programming utilities to improve backend logic and problem-solving skills.</li>
   </ul>
 </div>
 
-<div class="pub-item">
-  <b>🔐 SecureCrypt – Advanced Text Encryption & Decryption Tool (Java Swing)</b>
-  <i>Desktop Application | Java</i>
-  <ul>
-    <li>Implements classical + modern cryptographic algorithms: Caesar, ROT13, XOR, Atbash, Vigenere, AES-GCM, Base64, Hex.</li>
-    <li>Features AES-256 master password protection with SHA-256 derived key.</li>
-    <li>Clean Java Swing UI with gradient backgrounds and titled input/output panels.</li>
-    <li>Supports file load/save, and includes an integrated About window.</li>
-  </ul>
-</div>
-
-<!-- EXPERIENCE -->
-<h2>Experience</h2>
-<div class="pub-item">
-  <b>Independent Learning & Project Development</b>
-  <i>2023 – Present</i>
-  <ul>
-    <li>Building coding discipline through daily learning and project attempts.</li>
-    <li>Hands-on practice with backend logic, problem solving, and documentation.</li>
-    <li>Self-driven, long-term development in programming fundamentals.</li>
-  </ul>
-</div>
-
-<!-- EDUCATION -->
-<h2>Education</h2>
-<div class="pub-item">
-  <b>Higher Secondary (Completed)</b>
-  <i>Focus: Computer Science & Mathematics</i>
-</div>
-<div class="pub-item">
-  <b>Independent Technical Learning</b>
-  <ul>
-    <li>Java – OOP, basic backend patterns</li>
-    <li>Python – scripting, data handling</li>
-    <li>MySQL – schema design & queries</li>
-    <li>Web – HTML fundamentals, UI basics</li>
-  </ul>
-</div>
-
-<!-- SKILLS -->
-<h2>Skills</h2>
-<ul>
-  <li>Java, Python, HTML, MySQL</li>
-  <li>API Integration</li>
-  <li>Android Development (Beginner)</li>
-  <li>Problem Solving and Logic Building</li>
-  <li>Storytelling & Video Editing (Crime Stories)</li>
-</ul>
-
-<!-- HONORS -->
-<h2>Achievements</h2>
-<ul>
-  <li>Developed <b>ArchiveOne</b>, a fully conceptualized digital library app focused on performance and clean architecture.</li>
-  <li>Created <b>SecureCrypt</b>, an advanced Java Swing encryption tool implementing classical and modern cryptographic algorithms.</li>
-  <li>Built strong foundations in Java, Python, MySQL, and software design through consistent self-learning.</li>
-  <li>Completed multiple small-scale programming utilities to improve backend logic and problem‑solving skills.</li>
-</ul>
-
-</div>
 </body>
 </html>
