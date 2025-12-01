@@ -540,10 +540,26 @@ async function attemptLogin() {
   if (uHash === STORED_USERNAME_HASH && pHash === STORED_PASSWORD_HASH) {
     document.getElementById("login-popup").style.display = "none";
     document.getElementById("admin-panel").style.display = "block";
+    fillAdminFields();
   } else {
     alert("Invalid username or password");
   }
+
 }
+function fillAdminFields() {
+  document.getElementById("bio-name").value = siteData.name || "Gauthambala";
+  document.getElementById("bio-sub").value = siteData.subtitle || "Aspiring Software Engineer & Research Enthusiast";
+  document.getElementById("bio-email").value = siteData.email || "thefallenmasterid@gmail.com";
+
+  document.getElementById("exp-title").value = siteData.experience.title || "Independent Learning & Project Development";
+  document.getElementById("exp-sub").value = siteData.experience.subtitle || "2023 – Present";
+  document.getElementById("exp-points").value = (siteData.experience.points || []).join("\n");
+
+  document.getElementById("edu-school").value = siteData.education.school || "Higher Secondary";
+  document.getElementById("edu-sub").value = siteData.education.subtitle || "Computer Science & Mathematics";
+  document.getElementById("edu-learn").value = (siteData.education.selfLearn || []).join("\n");
+}
+
 function openTab(id) {
   document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
   document.querySelectorAll(".tab-page").forEach(page => page.style.display = "none");
@@ -553,14 +569,15 @@ function openTab(id) {
 }
 
 //Storage
- let siteData = {
+let siteData = {
   name: "",
   subtitle: "",
   email: "",
   projects: [],
-  experience: {},
-  education: {}
+  experience: { title: "", subtitle: "", points: [] },
+  education: { school: "", subtitle: "", selfLearn: [] }
 };
+
 function loadData() {
   const stored = localStorage.getItem("portfolioData");
   if (stored) {
