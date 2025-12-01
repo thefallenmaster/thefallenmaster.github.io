@@ -217,6 +217,88 @@ h1 {
   width: 90%;
   text-align: center;
 }
+/* ADMIN PANEL DESIGN */
+#admin-panel {
+  background: #0f1218;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.08);
+  width: 90%;
+  max-width: 600px;
+  padding: 20px;
+  animation: fadeIn 0.4s ease;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-header h2 {
+  font-size: 1.6rem;
+}
+
+.tab-btn {
+  background: #11141a;
+  padding: 10px 12px;
+  border: 1px solid rgba(255,255,255,0.07);
+  margin-right: 6px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--sub);
+}
+
+.tab-btn.active {
+  background: var(--accent);
+  color: #000;
+  font-weight: 700;
+}
+
+.tab-page {
+  margin-top: 25px;
+  display: none;
+}
+
+.tab-page h3 {
+  margin-bottom: 12px;
+}
+
+.project-box {
+  background: #12151c;
+  border: 1px solid rgba(255,255,255,0.07);
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-top: 12px;
+  color: var(--sub);
+}
+
+textarea, #admin-panel input {
+  width: 100%;
+  padding: 12px;
+  background: #0b0d11;
+  border: 1px solid #222;
+  border-radius: 10px;
+  color: var(--text);
+  margin-top: 4px;
+}
+
+.add-btn {
+  margin-top: 10px;
+  padding: 10px;
+  width: 100%;
+  background: var(--accent);
+  border-radius: 10px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  color: #000;
+}
+
 </style>
 </head>
 
@@ -316,14 +398,91 @@ h1 {
     <button class="close-btn" onclick="closePopup()">Close</button>
   </div>
 
-  <!-- Admin Panel -->
-  <div id="admin-panel">
-    <h2>Welcome, Admin</h2>
-    <p style="color:#8a94a6">Admin panel is active.  
-    We can add edit controls next.</p>
-
-    <button class="close-btn" onclick="closePopup()">Close</button>
+<!-- ADMIN PANEL -->
+<div id="admin-panel">
+  <div class="admin-header">
+    <h2>Admin Panel</h2>
+    <button class="close-btn" onclick="closePopup()">X</button>
   </div>
+<br>
+  <!-- Tabs -->
+  <div class="admin-tabs">
+    <button class="tab-btn active" onclick="openTab('dash')">Dashboard</button>
+    <button class="tab-btn" onclick="openTab('bio')">Profile</button>
+    <button class="tab-btn" onclick="openTab('projects')">Projects</button>
+    <button class="tab-btn" onclick="openTab('exp')">Experience</button>
+    <button class="tab-btn" onclick="openTab('edu')">Education</button>
+  </div>
+
+  <!-- Dashboard Tab -->
+  <div class="tab-page" id="dash" style="display:block;">
+    <h3>Welcome, Admin 👑</h3>
+    <p style="color:#8a94a6;">
+      Use the tabs above to edit content.  
+      Saving functionality will be added next.
+    </p>
+  </div>
+
+  <!-- Bio Tab -->
+  <div class="tab-page" id="bio">
+    <h3>Edit Profile</h3>
+    <label>Name</label>
+    <input type="text" placeholder="Gauthambala">
+    <label>Subtitle</label>
+    <input type="text" placeholder="Aspiring Engineer">
+    <label>Email</label>
+    <input type="text" placeholder="email@example.com">
+    <button class="add-btn" onclick="saveData()">Save Changes</button>
+
+  </div>
+
+  <!-- Projects Tab -->
+  <div class="tab-page" id="projects">
+    <h3>Edit Projects</h3>
+
+    <div class="project-box">
+      <label>Project Title</label>
+      <input type="text" placeholder="ArchiveOne – Digital Library">
+
+      <label>Subtitle</label>
+      <input type="text" placeholder="Android + Web | Solo Project">
+
+      <label>Points</label>
+      <textarea rows="4" placeholder="Point 1&#10;Point 2&#10;Point 3"></textarea>
+    </div>
+
+    <button class="add-btn">+ Add New Project</button>
+    <button class="add-btn" onclick="saveData()">Save Changes</button>
+  </div>
+
+  <!-- Experience Tab -->
+  <div class="tab-page" id="exp">
+    <h3>Edit Experience</h3>
+    <label>Title</label>
+    <input type="text" placeholder="Independent Learning">
+    <label>Subtitle</label>
+    <input type="text" placeholder="2023 – Present">
+    <label>Points</label>
+    <textarea rows="4"></textarea>
+    <button class="add-btn" onclick="saveData()">Save Changes</button>
+
+  </div>
+
+  <!-- Education Tab -->
+  <div class="tab-page" id="edu">
+    <h3>Edit Education</h3>
+    <label>School</label>
+    <input type="text" placeholder="Higher Secondary">
+    <label>Subtitle</label>
+    <input type="text" placeholder="Computer Science">
+    <label>Self Learning</label>
+    <textarea rows="4"></textarea>
+    <button class="add-btn" onclick="saveData()">Save Changes</button>
+  </div>
+  
+
+</div>
+
 
 </div>
 
@@ -370,6 +529,14 @@ async function attemptLogin() {
     alert("Invalid username or password");
   }
 }
+function openTab(id) {
+  document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+  document.querySelectorAll(".tab-page").forEach(page => page.style.display = "none");
+
+  document.querySelector(`button[onclick="openTab('${id}')"]`).classList.add("active");
+  document.getElementById(id).style.display = "block";
+}
+
 </script>
 
 </body>
