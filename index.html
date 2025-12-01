@@ -320,8 +320,9 @@ textarea, #admin-panel input {
   <!-- HEADER -->
   <div class="header-box">
     <h1>Gauthambala</h1>
-    <div class="sub">Aspiring Software Engineer & Research Enthusiast</div>
-    <div class="sub">thefallenmasterid@gmail.com</div>
+  <div class="sub" id="profile-subtitle">Aspiring Software Engineer & Research Enthusiast</div>
+  <div class="sub" id="profile-email">thefallenmasterid@gmail.com</div>
+
 
     <p>
       I am an aspiring developer focusing on strong fundamentals, backend engineering, 
@@ -355,8 +356,8 @@ textarea, #admin-panel input {
   <!-- EXPERIENCE -->
   <div class="section-title">Experience</div>
   <div class="card">
-    <b>Independent Learning & Project Development</b>
-    <i>2023 – Present</i>
+  <b id="experience-title">Independent Learning & Project Development</b>
+  <i id="experience-sub">2023 – Present</i>
     <ul>
       <li>Building discipline through daily coding.</li>
       <li>Strengthening logic, backend skills, and API understanding.</li>
@@ -423,18 +424,23 @@ textarea, #admin-panel input {
     </p>
   </div>
 
-  <!-- Bio Tab -->
-  <div class="tab-page" id="bio">
-    <h3>Edit Profile</h3>
-    <label>Name</label>
-    <input type="text" placeholder="Gauthambala">
-    <label>Subtitle</label>
-    <input type="text" placeholder="Aspiring Engineer">
-    <label>Email</label>
-    <input type="text" placeholder="email@example.com">
-    <button class="add-btn" onclick="saveData()">Save Changes</button>
+ 
+<!-- Bio Tab -->
+<div class="tab-page" id="bio">
+  <h3>Edit Profile</h3>
 
-  </div>
+  <label>Name</label>
+  <input type="text" id="bio-name" placeholder="Gauthambala">
+
+  <label>Subtitle</label>
+  <input type="text" id="bio-sub" placeholder="Aspiring Engineer">
+
+  <label>Email</label>
+  <input type="text" id="bio-email" placeholder="email@example.com">
+
+  <button class="add-btn" onclick="saveData()">Save Changes</button>
+</div>
+
 
   <!-- Projects Tab -->
   <div class="tab-page" id="projects">
@@ -456,29 +462,38 @@ textarea, #admin-panel input {
   </div>
 
   <!-- Experience Tab -->
-  <div class="tab-page" id="exp">
-    <h3>Edit Experience</h3>
-    <label>Title</label>
-    <input type="text" placeholder="Independent Learning">
-    <label>Subtitle</label>
-    <input type="text" placeholder="2023 – Present">
-    <label>Points</label>
-    <textarea rows="4"></textarea>
-    <button class="add-btn" onclick="saveData()">Save Changes</button>
+<div class="tab-page" id="exp">
+  <h3>Edit Experience</h3>
 
-  </div>
+  <label>Title</label>
+  <input type="text" id="exp-title" placeholder="Independent Learning">
+
+  <label>Subtitle</label>
+  <input type="text" id="exp-sub" placeholder="2023 – Present">
+
+  <label>Points</label>
+  <textarea id="exp-points" rows="4"></textarea>
+
+  <button class="add-btn" onclick="saveData()">Save Changes</button>
+</div>
+
 
   <!-- Education Tab -->
-  <div class="tab-page" id="edu">
-    <h3>Edit Education</h3>
-    <label>School</label>
-    <input type="text" placeholder="Higher Secondary">
-    <label>Subtitle</label>
-    <input type="text" placeholder="Computer Science">
-    <label>Self Learning</label>
-    <textarea rows="4"></textarea>
-    <button class="add-btn" onclick="saveData()">Save Changes</button>
-  </div>
+<div class="tab-page" id="edu">
+  <h3>Edit Education</h3>
+
+  <label>School</label>
+  <input type="text" id="edu-school" placeholder="Higher Secondary">
+
+  <label>Subtitle</label>
+  <input type="text" id="edu-sub" placeholder="Computer Science">
+
+  <label>Self Learning</label>
+  <textarea id="edu-learn" rows="4"></textarea>
+
+  <button class="add-btn" onclick="saveData()">Save Changes</button>
+</div>
+
   
 
 </div>
@@ -535,6 +550,72 @@ function openTab(id) {
 
   document.querySelector(`button[onclick="openTab('${id}')"]`).classList.add("active");
   document.getElementById(id).style.display = "block";
+}
+
+//Storage
+ let siteData = {
+  name: "",
+  subtitle: "",
+  email: "",
+  projects: [],
+  experience: {},
+  education: {}
+};
+function loadData() {
+  const stored = localStorage.getItem("portfolioData");
+  if (stored) {
+    siteData = JSON.parse(stored);
+    applyDataToPage();
+  }
+}
+loadData();
+function saveData() {
+
+  // PROFILE
+  siteData.name = document.getElementById("bio-name").value;
+  siteData.subtitle = document.getElementById("bio-sub").value;
+  siteData.email = document.getElementById("bio-email").value;
+
+  // EXPERIENCE
+  siteData.experience = {
+    title: document.getElementById("exp-title").value,
+    subtitle: document.getElementById("exp-sub").value,
+    points: document.getElementById("exp-points").value.split("\n")
+  };
+
+  // EDUCATION
+  siteData.education = {
+    school: document.getElementById("edu-school").value,
+    subtitle: document.getElementById("edu-sub").value,
+    selfLearn: document.getElementById("edu-learn").value.split("\n")
+  };
+
+  // Save to localStorage
+  localStorage.setItem("portfolioData", JSON.stringify(siteData));
+
+  alert("Saved successfully!");
+  applyDataToPage();
+}
+function applyDataToPage() {
+
+  // Name
+  document.querySelector("h1").innerText =
+      siteData.name || "Gauthambala";
+
+  // Subtitle (now using proper ID)
+  document.getElementById("profile-subtitle").innerText =
+      siteData.subtitle || "Aspiring Software Engineer & Research Enthusiast";
+
+  // Email (proper ID)
+  document.getElementById("profile-email").innerText =
+      siteData.email || "thefallenmasterid@gmail.com";
+
+  // Experience
+  document.getElementById("experience-title").innerText =
+      siteData.experience.title || "Independent Learning & Project Development";
+
+  document.getElementById("experience-sub").innerText =
+      siteData.experience.subtitle || "2023 – Present";
 }
 
 </script>
