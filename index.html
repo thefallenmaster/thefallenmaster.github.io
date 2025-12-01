@@ -1,160 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Gautham Bala – Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio</title>
 
 <style>
-/* -------------------------
-   CORE THEME (PRO + GAMER)
--------------------------- */
+/* ======= THEME ======= */
 :root {
-  --bg: #0b0e13;
-  --bg-soft: #151a21;
-  --text: #e6ecf3;
-  --subtext: #8a96a7;
-  --accent: #00a6ff;         /* neon blue */
-  --accent-glow: 0 0 18px #008bfdcc;
-  --card: rgba(255, 255, 255, 0.04);
-  --glass: rgba(255, 255, 255, 0.06);
-  --border: rgba(255, 255, 255, 0.08);
-  --radius: 16px;
-  --shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
-  --transition: 0.25s ease;
+  --bg: #0a0c10;
+  --card: #11141a;
+  --text: #e5ecff;
+  --sub: #8a94a6;
+  --accent: #00aaff;
+  --accent-glow: 0 0 18px #009dff;
+  --radius: 14px;
 }
 
-/* -------------------------
-   GLOBAL RESET
--------------------------- */
+/* ===== RESET ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Inter", "SF Pro Display", system-ui, sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 body {
   background: var(--bg);
   color: var(--text);
-  -webkit-font-smoothing: antialiased;
-  padding-bottom: 50px;
-
-  /* gamer energy gradient background */
+  padding-bottom: 80px;
   background-image:
-    radial-gradient(circle at 20% 20%, rgba(0, 136, 255, 0.15), transparent 25%),
-    radial-gradient(circle at 80% 80%, rgba(0, 80, 255, 0.12), transparent 30%),
-    linear-gradient(180deg, #0b0e13 0%, #0a0c12 100%);
-
-  animation: fadeIn 0.8s ease forwards;
+    radial-gradient(circle at 20% 20%, rgba(0,140,255,0.15), transparent 25%),
+    radial-gradient(circle at 80% 80%, rgba(0,80,255,0.12), transparent 30%);
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(18px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
+/* ===== LAYOUT ===== */
 .container {
   width: 92%;
-  max-width: 1000px;
+  max-width: 1100px;
   margin: auto;
 }
 
-/* -------------------------
-   TOP NAV BAR
--------------------------- */
-.topbar {
+/* ===== NAVBAR ===== */
+.navbar {
   position: sticky;
-  top: 12px;
-  z-index: 50;
-  backdrop-filter: blur(12px);
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
+  top: 20px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  padding: 14px 20px;
   border-radius: var(--radius);
-  padding: 12px 20px;
-  margin-bottom: 30px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.topbar h3 {
-  font-size: 1.1rem;
-  letter-spacing: 0.3px;
-}
-
-/* button */
-.btn {
-  background: linear-gradient(90deg, var(--accent), #006dc7);
-  padding: 10px 16px;
-  border-radius: 10px;
-  font-weight: 600;
-  text-decoration: none;
-  color: #001322;
-  box-shadow: 0 0 12px #0091ff99;
-  transition: var(--transition);
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 18px #0095ff;
-}
-
-/* -------------------------
-   HEADER PROFILE CARD
--------------------------- */
-.header-card {
-  background: var(--glass);
-  border: 1px solid var(--border);
-  padding: 26px;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  backdrop-filter: blur(18px);
   margin-bottom: 40px;
-  animation: popIn 0.7s ease forwards;
 }
 
-@keyframes popIn {
-  from { opacity: 0; transform: scale(0.96); }
-  to   { opacity: 1; transform: scale(1); }
+.nav-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.nav-links a {
+  margin-left: 16px;
+  color: var(--sub);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+  text-shadow: var(--accent-glow);
+}
+
+/* ===== HEADER ===== */
+.header-box {
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 28px;
+  border-radius: var(--radius);
+  margin-bottom: 40px;
 }
 
 h1 {
   font-size: 2.6rem;
-  font-weight: 800;
-  background: linear-gradient(90deg, #fff, #8bb8ff);
+  background: linear-gradient(90deg, #fff, #9ac7ff);
   -webkit-background-clip: text;
   color: transparent;
-  letter-spacing: -1px;
-  margin-bottom: 6px;
 }
 
 .sub {
-  color: var(--subtext);
-  margin-bottom: 5px;
+  margin-top: 8px;
+  color: var(--sub);
 }
 
-.header-card p {
-  margin-top: 20px;
-  color: var(--subtext);
+.header-box p {
+  margin-top: 18px;
   line-height: 1.6;
+  color: var(--sub);
 }
 
-/* -------------------------
-   SECTION TITLES
--------------------------- */
-h2 {
-  font-size: 1.7rem;
-  margin: 35px 0 20px;
-  font-weight: 700;
+/* ===== SECTIONS ===== */
+.section-title {
+  font-size: 1.8rem;
+  margin: 30px 0 18px;
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-h2::before {
+.section-title::before {
   content: "";
   width: 12px;
   height: 12px;
@@ -163,177 +118,259 @@ h2::before {
   box-shadow: var(--accent-glow);
 }
 
-/* -------------------------
-   CARD LISTS (news, projects)
--------------------------- */
-.item-card {
+/* ===== CARDS ===== */
+.card {
   background: var(--card);
-  border: 1px solid var(--border);
-  padding: 20px;
+  border: 1px solid rgba(255,255,255,0.07);
+  padding: 18px;
   border-radius: var(--radius);
-  margin-bottom: 15px;
-  transition: var(--transition);
-  box-shadow: 0 0 0 rgba(0,0,0,0);
+  margin-bottom: 14px;
 }
 
-.item-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow);
+.card b {
+  font-size: 1.05rem;
 }
 
-.item-card b {
-  font-size: 1.1rem;
-}
-
-.item-card i {
+.card i {
   display: block;
-  color: var(--subtext);
-  margin: 4px 0 10px;
+  margin-top: 5px;
+  margin-bottom: 8px;
+  color: var(--sub);
 }
 
-.item-card ul {
-  color: var(--subtext);
-  margin-left: 18px;
-  margin-top: 6px;
-  line-height: 1.55;
+.card ul {
+  margin-left: 20px;
+  color: var(--sub);
+  line-height: 1.5;
 }
 
-/* -------------------------
-   GENERAL TEXT
--------------------------- */
-ul {
-  margin-left: 18px;
-  color: var(--subtext);
-  line-height: 1.55;
-}
-
-p {
-  color: var(--subtext);
-}
-
-/* -------------------------
-   MOBILE RESPONSIVE
--------------------------- */
+/* ===== RESPONSIVE ===== */
 @media (max-width: 700px) {
   h1 { font-size: 2rem; }
-  .header-card { padding: 20px; }
-  h2 { font-size: 1.4rem; }
+  .navbar { flex-direction: column; gap: 12px; }
+  .nav-links a { margin-left: 10px; }
+}
+
+/* ===== ADMIN POPUP ===== */
+#popup-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(5px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup {
+  background: #11141a;
+  padding: 25px;
+  border-radius: 14px;
+  width: 90%;
+  max-width: 380px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 0 20px rgba(0,150,255,0.3);
+}
+
+.popup h2 {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.popup input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  background: #0d1014;
+  border: 1px solid #222;
+  border-radius: 10px;
+  color: #e5ecff;
+}
+
+.popup button {
+  width: 100%;
+  padding: 12px;
+  background: var(--accent);
+  border: none;
+  border-radius: 10px;
+  color: black;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.close-btn {
+  background: #aa0000 !important;
+  color: white !important;
+  margin-top: 10px !important;
+}
+
+/* Admin Panel */
+#admin-panel {
+  display: none;
+  padding: 25px;
+  background: #11141a;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.08);
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
 }
 </style>
 </head>
+
 <body>
 
 <div class="container">
 
-  <!-- Top Bar -->
-  <div class="topbar">
-    <h3>Portfolio</h3>
-    <div>
-      <a href="admin.html" class="btn">Admin</a>
-      <a href="https://github.com/thefallenmaster" class="btn" style="margin-left:10px;">GitHub</a>
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <div class="nav-title">Portfolio</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="popup" id="admin-btn">Admin</a>
+      <a href="https://github.com/thefallenmaster">Github</a>
+      <a href="mailto:thefallenmasterid@gmail.com">Support</a>
     </div>
   </div>
 
-  <!-- HEADER CARD -->
-  <div class="header-card">
-    <h1>Gautham Bala</h1>
+  <!-- HEADER -->
+  <div class="header-box">
+    <h1>Gauthambala</h1>
     <div class="sub">Aspiring Software Engineer & Research Enthusiast</div>
     <div class="sub">thefallenmasterid@gmail.com</div>
-    <div class="sub">
-      <a href="https://github.com/thefallenmaster" style="color:var(--accent);text-decoration:none;">GitHub</a> |
-      <a href="#" style="color:var(--accent);text-decoration:none;">Portfolio</a>
-    </div>
 
-    <p>I am an aspiring developer focusing on building strong fundamentals in programming, backend systems, and app development. I am currently learning Java, Python, MySQL, HTML, and Android development. My interest lies in understanding how software systems scale, how apps are engineered end-to-end, and how emerging AI tools can be integrated into products.</p>
-  </div>
-
-  <!-- NEWS -->
-  <h2>News</h2>
-  <div class="item-card">
-    2025.02 – Started working on <b>ArchiveOne</b>, a personal Internet-Archive-style app.
-  </div>
-  <div class="item-card">
-    2025.01 – Began exploring Android development and API-based applications.
-  </div>
-  <div class="item-card">
-    2024.10 – Completed foundational training in Python and Java.
-  </div>
-  <div class="item-card">
-    2024.05 – Began learning SQL and backend logic building.
+    <p>
+      I am an aspiring developer focusing on strong fundamentals, backend engineering, 
+      system design basics, and modern Android development.  
+      My interest lies in building scalable apps and integrating efficient AI features.
+    </p>
   </div>
 
-  <!-- PROJECTS -->
-  <h2>Projects</h2>
+  <!-- PROJECTS PREVIEW -->
+  <div class="section-title">Featured Projects</div>
 
-  <div class="item-card">
+  <div class="card">
     <b>ArchiveOne – Digital Library & Media App</b>
-    <i>Solo Project | Android + Web</i>
+    <i>Android + Web | Solo Project</i>
     <ul>
-      <li>Designing an Internet Archive–style app with fast downloads, clean UI, and integrated viewer/player.</li>
-      <li>Optimized parallel downloading and caching mechanisms.</li>
-      <li>Focused on performance, data handling, and scalability.</li>
+      <li>Internet Archive–style app with high-speed downloads and viewers.</li>
+      <li>Parallel downloads + caching system.</li>
+      <li>Clean UI and scalable structure.</li>
     </ul>
   </div>
 
-  <div class="item-card">
-    <b>🔐 SecureCrypt – Advanced Text Encryption & Decryption Tool (Java Swing)</b>
-    <i>Desktop Application | Java</i>
+  <div class="card">
+    <b>SecureCrypt – Encryption & Decryption Toolkit</b>
+    <i>Java Swing | Desktop App</i>
     <ul>
-      <li>Implements classical + modern cryptographic algorithms: Caesar, ROT13, XOR, Atbash, Vigenere, AES-GCM, Base64, Hex.</li>
-      <li>Features AES-256 master password protection with SHA-256 derived key.</li>
-      <li>Clean Java Swing UI with gradient backgrounds and titled input/output panels.</li>
-      <li>Supports file load/save, and includes an integrated About window.</li>
+      <li>Includes Caesar, ROT13, XOR, Atbash, Vigenère, AES-GCM, Base64.</li>
+      <li>Clean dual-panel UI with file load/save support.</li>
     </ul>
   </div>
 
   <!-- EXPERIENCE -->
-  <h2>Experience</h2>
-  <div class="item-card">
+  <div class="section-title">Experience</div>
+  <div class="card">
     <b>Independent Learning & Project Development</b>
     <i>2023 – Present</i>
     <ul>
-      <li>Building coding discipline through daily learning and project attempts.</li>
-      <li>Hands-on practice with backend logic, problem solving, and documentation.</li>
-      <li>Self-driven, long-term development in programming fundamentals.</li>
+      <li>Building discipline through daily coding.</li>
+      <li>Strengthening logic, backend skills, and API understanding.</li>
     </ul>
   </div>
 
   <!-- EDUCATION -->
-  <h2>Education</h2>
-  <div class="item-card">
+  <div class="section-title">Education</div>
+  <div class="card">
     <b>Higher Secondary (Completed)</b>
-    <i>Focus: Computer Science & Mathematics</i>
+    <i>Computer Science & Mathematics</i>
   </div>
 
-  <div class="item-card">
-    <b>Independent Technical Learning</b>
+  <div class="card">
+    <b>Self-Learning Path</b>
     <ul>
-      <li>Java – OOP, basic backend patterns</li>
-      <li>Python – scripting, data handling</li>
-      <li>MySQL – schema design & queries</li>
-      <li>Web – HTML fundamentals, UI basics</li>
+      <li>Java – OOP, backend basics</li>
+      <li>Python – scripting & tools</li>
+      <li>MySQL – queries and schema design</li>
+      <li>Web – HTML, UI basics</li>
     </ul>
   </div>
 
-  <!-- SKILLS -->
-  <h2>Skills</h2>
-  <ul>
-    <li>Java, Python, HTML, MySQL</li>
-    <li>API Integration</li>
-    <li>Android Development (Beginner)</li>
-    <li>Problem Solving and Logic Building</li>
-    <li>Storytelling & Video Editing (Crime Stories)</li>
-  </ul>
-
-  <!-- ACHIEVEMENTS -->
-  <h2>Achievements</h2>
-  <ul>
-    <li>Developed <b>ArchiveOne</b>, a fully conceptualized digital library app focused on performance and clean architecture.</li>
-    <li>Created <b>SecureCrypt</b>, an advanced Java Swing encryption tool implementing classical and modern cryptographic algorithms.</li>
-    <li>Built strong foundations in Java, Python, MySQL, and software design through consistent self-learning.</li>
-    <li>Completed multiple small-scale programming utilities to improve backend logic and problem-solving skills.</li>
-  </ul>
 </div>
+
+
+<!-- ================= ADMIN POPUP HTML ================= -->
+
+<div id="popup-bg">
+
+  <!-- Login Popup -->
+  <div class="popup" id="login-popup">
+    <h2>Admin Login</h2>
+
+    <input type="text" id="admin-username" placeholder="Username">
+    <input type="password" id="admin-password" placeholder="Password">
+
+    <button onclick="attemptLogin()">Login</button>
+    <button class="close-btn" onclick="closePopup()">Close</button>
+  </div>
+
+  <!-- Admin Panel -->
+  <div id="admin-panel">
+    <h2>Welcome, Admin</h2>
+    <p style="color:#8a94a6">Admin panel is active.  
+    We can add edit controls next.</p>
+
+    <button class="close-btn" onclick="closePopup()">Close</button>
+  </div>
+
+</div>
+
+
+<!-- ================= ADMIN PANEL SCRIPT ================= -->
+
+<script>
+// Your real credentials hashed
+const STORED_USERNAME_HASH = "99c087fa735b6265b789de50e8889b112166b8575389469a29aadd30fd85bbba";
+const STORED_PASSWORD_HASH = "7aa7f974c7d4f8f8cf28562f5cca355d9598396086e0932b64e389bf488a6320";
+
+// SHA-256 hashing
+async function sha256(text) {
+  const data = new TextEncoder().encode(text);
+  const hash = await crypto.subtle.digest("SHA-256", data);
+  return [...new Uint8Array(hash)].map(b => b.toString(16).padStart(2,"0")).join("");
+}
+
+// Open popup
+document.getElementById("admin-btn").onclick = function(e) {
+  e.preventDefault();
+  document.getElementById("popup-bg").style.display = "flex";
+  document.getElementById("login-popup").style.display = "block";
+  document.getElementById("admin-panel").style.display = "none";
+};
+
+// Close popup
+function closePopup() {
+  document.getElementById("popup-bg").style.display = "none";
+}
+
+// Login check
+async function attemptLogin() {
+  const u = document.getElementById("admin-username").value;
+  const p = document.getElementById("admin-password").value;
+
+  const uHash = await sha256(u);
+  const pHash = await sha256(p);
+
+  if (uHash === STORED_USERNAME_HASH && pHash === STORED_PASSWORD_HASH) {
+    document.getElementById("login-popup").style.display = "none";
+    document.getElementById("admin-panel").style.display = "block";
+  } else {
+    alert("Invalid username or password");
+  }
+}
+</script>
 
 </body>
 </html>
