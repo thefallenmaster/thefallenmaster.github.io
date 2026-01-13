@@ -270,7 +270,7 @@ span{
 html, body {
     overflow-x: hidden;
 }
-@media (max-width: 800px) {
+@media (max-width: 768px) {
 html, body {
   margin: 0;
   padding: 0;
