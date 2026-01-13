@@ -64,38 +64,7 @@ nav a.active{
     border-bottom: 3px solid #b74b4b;
 }
 
-@media(max-width:995px){
-    nav{
-        position: absolute;
-        display: none;
-        top: 0;
-        right: 0;
-        width: 40%;
-        border-left: 3px solid #b74b4b;
-        border-bottom: 3px solid #b74b4b;
-        border-bottom-left-radius: 2rem;
-        padding: 1rem solid;
-        background-color: #161616;
-        border-top: 0.1rem solid rgba(0,0,0,0.1);
-    }
 
-    nav.active{
-        display: block;
-    }
-
-    nav a{
-        display: block;
-        font-size: 2rem;
-        margin: 3rem 0;
-    }
-
-    nav a:hover,
-    nav a.active{
-        padding: 1rem;
-        border-radius: 0.5rem;
-        border-bottom: 0.5rem solid #b74b4b;
-    }
-}
 
 section{
     min-height: 100vh;
@@ -242,31 +211,9 @@ span{
     }
 }
 
-@media (max-width: 1000px){
-    .home{
-        gap: 4rem;
-    }
-}
 
-@media(max-width:995px){
-    .home{
-        flex-direction: column;
-        margin: 5rem 4rem;
-    }
 
-    .home .home-content h3{
-        font-size: 2.5rem;
-    }
 
-    .home-content h1{
-        font-size: 5rem;
-    }
-
-    .home-img img{
-        width: 70vw;
-        margin-top: 4rem;
-    }
-}
 /* Modal Overlay */
 .modal {
     display: none;
@@ -319,14 +266,95 @@ span{
         transform: scale(1);
     }
 }
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 html, body {
     overflow-x: hidden;
+}
+@media (max-width: 800px) {
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+  background-color: #000;
+  background-image: url('background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.card {
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 320px;
+  text-align: center;
+  padding: 20px;
+  color: white;
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.profile-img {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 15px;
+  background-image: url('images/profile.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+}
+
+.card h2 {
+  font-size: 1.6em;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card .info {
+  font-size: 1em;
+  color: #ddd;
+  margin-bottom: 70px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.social-icon {
+  color: #ddd;
+  font-size: 1.8em;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #007BFF;
+}
+
+.footer {
+  font-size: 0.8em;
+  color: #ddd;
+  margin-top: 20px;
+}
+
+.footer p {
+  margin: 0;
+}
+
 }
 
 
